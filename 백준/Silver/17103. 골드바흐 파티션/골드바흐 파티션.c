@@ -3,7 +3,7 @@
 int arr[1000000];
 int prime_arr[78498];
 
-void set_prime(int *arr, int *prime_arr) {
+void set_prime() {
     int count = 0;
 	arr[0] = arr[1] = 1;
     for (int i = 2; i < 1000; i++)
@@ -18,7 +18,7 @@ void set_prime(int *arr, int *prime_arr) {
 int main() {
     int t, n, count;
     scanf("%d", &t);
-    set_prime(arr, prime_arr);
+    set_prime();
     for (int i = 0; i < t; i++) {
         scanf("%d", &n);
         count = 0;
