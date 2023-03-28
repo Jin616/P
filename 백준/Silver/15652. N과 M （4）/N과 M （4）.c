@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-char buf[13000000];
+char buf[110000];
 int idx;
 
 void dep(int d, int m, int n, int *arr) {
