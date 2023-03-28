@@ -1,20 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 bool arr[1000001];
 
 int main() {
-    long long min, max, count, i = 2;
+    long long min, max, count = 0, i, j;
     scanf("%lld%lld", &min, &max);
-	count = 0;
-	while (i <= max / i) {
-		for (long long k = min/(i*i); i*i*k <= max; k++)
-			if(i*i*k >= min && !arr[i*i*k - min]) {
-				arr[i*i*k - min] = 1;
+	for (i = 2; i*i <= max; i++)
+		for (j = ceil((double)min/(i*i)); i*i*j <= max; j++)
+			if(i*i*j >= min && !arr[i*i*j - min]) {
+				arr[i*i*j - min] = 1;
 				count++;
 			}
-		i++;
-	}
 	printf("%lld\n", max - min - count + 1, count);
 	return 0;
 }
