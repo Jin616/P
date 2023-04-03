@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    char num[33];
+    char num[32];
     int n = 0, b;
     scanf("%s%d", num, &b);
     for (int i = 0; num[i]; i++)
