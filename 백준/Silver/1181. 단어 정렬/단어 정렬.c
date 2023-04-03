@@ -2,7 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-int cmp(char *s1, char *s2) {
+int cmp(const void *a, const void *b) {
+    char *s1 = (char *)a;
+    char *s2 = (char *)b;
     int i = 0;
     if (strlen(s1) != strlen(s2))
         return (strlen(s1) - strlen(s2));
@@ -45,19 +47,22 @@ void quick_sort(char** str, int start, int end) {
 
 int main() {
     int n;
-    char** str;
+    char str[20001][51] = {0}, prev[51] ="";
     scanf("%d", &n);
-    str = (char **)malloc(n*sizeof(char *));
+    //str = (char **)malloc(n*sizeof(char *));
     for (int i = 0; i < n; i++) {
-        str[i] = (char *)malloc(51*sizeof(char *));
+        //str[i] = (char *)malloc(51*sizeof(char *));
         scanf("%s", str[i]);
     }
-    quick_sort(str, 0, n - 1);
+    qsort(str, n, sizeof(char) * 51, cmp);
+    //quick_sort(str, 0, n - 1);
     for (int i = 0; i < n; i++) {
-        if (str[i][0])
-            printf("%s\n", str[i]);
-        free(str[i]);
+        if(strcmp(str[i], prev) == 0)
+			continue;
+		printf("%s\n", str[i]);
+		strcpy(prev, str[i]);
+        //free(str[i]);
     }
-    free(str);
+    //free(str);
     return 0;
 }
